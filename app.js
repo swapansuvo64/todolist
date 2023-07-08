@@ -10,8 +10,8 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect("mongodb+srv://Suvadeep:Suvadeep123@cluster0.yewvbho.mongodb.net/todolistDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 const itemsSchema = {
   name: String,
 };
@@ -113,6 +113,6 @@ app.post("/delete", function(req, res) {
     })
   }
   });
-app.listen(3000, function () {
+app.listen(8000, function () {
   console.log("Server started on port 3000");
 });
