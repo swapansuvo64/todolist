@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+//Sneha2001
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -10,7 +10,14 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://Suvadeep:Sneha2001@cluster0.yewvbho.mongodb.net/todolistDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+.then(function(){
+  console.log("success");
+})
+.catch(function(err){
+  console.log(err);
+})
+
 
 const itemsSchema = {
   name: String,
@@ -113,6 +120,6 @@ app.post("/delete", function(req, res) {
     })
   }
   });
-app.listen(8000, function () {
+app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
